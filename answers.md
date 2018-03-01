@@ -194,7 +194,7 @@ MySQL was correctly installed!
 
 Here, I made a mistake that made me lose a lot of time.
 - I used [the documentation](https://docs.datadoghq.com/agent/agent_checks/) to try to create the Agent check.
-- After reading it, I decided to make an integration and started following the indications.
+- After reading it, I decided to make an integration and started following the indications, instead of using [Your first check](https://docs.datadoghq.com/agent/agent_checks/#your-first-check)
 - So I installed ruby and wget
 
 <a href="https://i.imgur.com/zq1paOE.jpg" title="Installing ruby">
@@ -203,8 +203,7 @@ Here, I made a mistake that made me lose a lot of time.
 <a href="https://i.imgur.com/Je3VXdi.jpg" title="Ruby installed">
 <img src="https://i.imgur.com/Je3VXdi.jpg" width="400" height="217" alt="Ruby installed"></a>
 
-**00. XXXXX**
-   - XXXXXXX
+Then, I proceeded to install git. I ended up after that with an error: `Could not locate gemfile`.
 
 <a href="https://i.imgur.com/lPY17Zc.jpg" title="Installing git">
 <img src="https://i.imgur.com/lPY17Zc.jpg" width="400" height="217" alt="Installing git"></a>
@@ -212,15 +211,13 @@ Here, I made a mistake that made me lose a lot of time.
 <a href="https://i.imgur.com/aKFIJPG.jpg" title="Could not locate gemfile">
 <img src="https://i.imgur.com/aKFIJPG.jpg" width="400" height="217" alt="Could not locate gemfile"></a>
 
+ So after googling again, I used the `bundle init` command which allowed to create a gemfile, and made the install again successfully.
 
-**00. XXXXX**
-   - XXXXXXX
+<a href="https://i.imgur.com/Iwp2KCj.jpg" title="Bundle init">
+<img src="https://i.imgur.com/Iwp2KCj.jpg" width="400" height="217" alt="Bundle init"></a>
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
-
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/JOjWBk5.jpg" title="Info are still OK">
+<img src="https://i.imgur.com/JOjWBk5.jpg" width="400" height="217" alt="Info are still OK"></a>
 
 
 **00. XXXXX**
