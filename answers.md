@@ -98,6 +98,7 @@ Once connected to the VM - I did not use SSH at that point as I didn't know how 
 <a href="https://i.imgur.com/BlhpbYG.jpg" title="Agent reporting">
 <img src="https://i.imgur.com/BlhpbYG.jpg" width="400" height="217" alt="Agent reporting"></a>
 
+## Collecting metrics
 
 I added tags to the config file using `sudo nano /etc/dd-agent/datadog.conf`, then saved. At that point, I had never modified a file so I did not know that '#' were made for comments lines only. I added the tags on the wrong line and then added them manually on the Host Map. Though I felt something was wrong, I wasn't sure how to correct it and left it as such.
 
@@ -119,65 +120,53 @@ I proceeded to install MySQL after that.
 <a href="https://i.imgur.com/i0wVxAA.jpg" title="Creating MySQL password">
 <img src="https://i.imgur.com/i0wVxAA.jpg" width="400" height="217" alt="Creating MySQL password"></a>
 
-**00. XXXXX**
-   - XXXXXXX
+I was faced with several errors when trying to configure MySQL. First, I tried to configure a password, which was denied. So I troubleshot the issue by googling and reconfigured MySQL and I was finally granted access.
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/iyCwOVJ.jpg" title="Reconfiguring MySQL">
+<img src="https://i.imgur.com/iyCwOVJ.jpg" width="400" height="217" alt="Reconfiguring MySQL"></a>
 
-**00. XXXXX**
-   - XXXXXXX
+<a href="https://i.imgur.com/hPH2zrp.jpg" title="MySQL user OK">
+<img src="https://i.imgur.com/hPH2zrp.jpg" width="400" height="217" alt="MySQL user OK"></a>
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+I made a test with Grant and got an error `Missing replication client grant`, so I gave the rights and got a `MySQL grant - OK` in return.
 
-**00. XXXXX**
-   - XXXXXXX
+<a href="https://i.imgur.com/I4XHU8M.jpg" title="Grant error">
+<img src="https://i.imgur.com/I4XHU8M.jpg" width="400" height="217" alt="Grant error"></a>
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/mSnHF33.jpg" title="MySQL grant OK">
+<img src="https://i.imgur.com/mSnHF33.jpg" width="400" height="217" alt="MySQL grant OK"></a>
 
-**00. XXXXX**
-   - XXXXXXX
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+After that, I also gave the performance_schema rights.
+- I started following the [configuration to connect the Agent to MySQL](https://app.datadoghq.com/account/settings#integrations/mysql).
+- I tried typing the config in the yaml file exactly like I could see it on the documentation.
 
-**00. XXXXX**
-   - XXXXXXX
+<a href="https://i.imgur.com/P64d7Lx.jpg" title="performance_schema rights">
+<img src="https://i.imgur.com/P64d7Lx.jpg" width="400" height="217" alt="performance_schema rights"></a>
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/e9EWlZ7.jpg" title="Configuring yaml file">
+<img src="https://i.imgur.com/e9EWlZ7.jpg" width="400" height="217" alt="Configuring yaml file"></a>
 
-**00. XXXXX**
-   - XXXXXXX
+There was an issue with the file however. I did not know how yaml file worked, so I google the issue again and found out that:
+- yaml files are very dependent on indentation
+- So I tried to modify every space on the file and was not immediately able to find where the issue was
+I had already created a password when setting up the user. So, when I tried to modify the yaml file using the documentation, I did not click on "generate a password". This cause the indentation to be very different from what it should be.
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+Since I had never seen a yaml file before, I was trying to reproduce exactly what I was seeing, and could not correct my mistake. After looking for a while, I decided to generate a password just to see what would happen. It became suddenly clear: I could see what my mistake was with the indentation, and corrected it immediately.
 
-**00. XXXXX**
-   - XXXXXXX
+<a href="https://i.imgur.com/cB3TW8g.jpg" title="Error on yaml file">
+<img src="https://i.imgur.com/cB3TW8g.jpg" width="400" height="217" alt="Error on yaml file"></a>
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/BmZIg36.jpg" title="Documentation doesn't show correct indentation">
+<img src="https://i.imgur.com/BmZIg36.jpg" width="400" height="217" alt="Documentation doesn't show correct indentation"></a>
 
-**00. XXXXX**
-   - XXXXXXX
+The left screenshot (28) shows the corrected yaml file after changing the indentation. The right screenshot (29) shows the result of the command `sudo /etc/init.d/datadog-agent info`.
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/8osWDmY.jpg" title="Indentation is now correct">
+<img src="https://i.imgur.com/8osWDmY.jpg" width="400" height="217" alt="Indentation is now correct"></a>
 
-**00. XXXXX**
-   - XXXXXXX
-
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
-
-**00. XXXXX**
-   - XXXXXXX
-
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/SB6rDWc.jpg" title="Info on agent is ok">
+<img src="https://i.imgur.com/SB6rDWc.jpg" width="400" height="217" alt="Info on agent is good"></a>
 
 **00. XXXXX**
    - XXXXXXX
