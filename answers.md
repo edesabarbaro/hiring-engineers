@@ -450,7 +450,7 @@ So, I disabled the warning as recommended [on the troubleshooting page](https://
 - I believe it should automatically create a timeboard in my dashboard, but nothing happens.
 - However, *something* is indeed happening since the `hello world` gets printed.
 - I need to find what error I have made that is preventing the timeboard from being created.
-- I tired to [find some help on AskUbuntu](https://askubuntu.com/questions/1010971/nothing-happens-when-executing-python-script-with-datadog-api) but this hasn't been successful yet!
+- I tried to [find some help on AskUbuntu](https://askubuntu.com/questions/1010971/nothing-happens-when-executing-python-script-with-datadog-api) but this hasn't been successful yet!
 - I will make more tests to find where the issue is coming from.
 
 **Unfinished yet**
