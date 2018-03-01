@@ -8,7 +8,12 @@ Thank you for taking the time to consider my application!
 
 ## Table of content
 
-You can find [at this address](https://imgur.com/a/GMviG) the full imgur album with the screenshots.
+You can find [at this address](https://imgur.com/a/GMviG) the full imgur album with the screenshots for the first installation.
+ 
+- [Prerequisites - Setup the environment](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#prerequisites---setup-the-environment)
+    - [Installing a VM](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#installing-a-vm)
+    - [Installing Datadog Agent](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#installing-datadog-agent)
+- [Collecting metrics](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#collecting-metrics)
 
 ## Prerequisites - Setup the environment
 
@@ -100,6 +105,8 @@ Once connected to the VM - I did not use SSH at that point as I didn't know how 
 
 ## Collecting metrics
 
+### Adding tags 
+
 > Add tags in the Agent config file and show us a screenshot of your host and its tags on the Host Map page in Datadog.
 
 I added tags to the config file using `sudo nano /etc/dd-agent/datadog.conf`, then saved. At that point, I had never modified a file so I did not know that '#' were made for comments lines only. I added the tags on the wrong line and then added them manually on the Host Map. Though I felt something was wrong, I wasn't sure how to correct it and left it as such.
@@ -109,6 +116,8 @@ I added tags to the config file using `sudo nano /etc/dd-agent/datadog.conf`, th
 
 <a href="https://i.imgur.com/sfYy0EH.jpg" title="Host Map tags">
 <img src="https://i.imgur.com/sfYy0EH.jpg" width="400" height="217" alt="Host Map tags"></a>
+
+### Adding a database
 
 > Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database.
 
@@ -175,6 +184,8 @@ MySQL was correctly installed!
 
 <a href="https://i.imgur.com/YiyuXuh.jpg" title="MySQL reporting">
 <img src="https://i.imgur.com/YiyuXuh.jpg" width="400" height="217" alt="MySQL reporting"></a>
+
+### Creating a custom metric
 
 > Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000.
 
