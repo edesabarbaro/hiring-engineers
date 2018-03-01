@@ -22,6 +22,7 @@ You can find [at this address](https://imgur.com/a/GMviG) the full imgur album w
 I decided to follow the suggestion and to install a Vagrant Ubuntu 12.04 VM. I downloaded Vagrant and VirtualBox, then checked with the cmd on Windows with `vagrant -v` if Vagrant was properly installed, and the command returned a positive answer with Vagrant 2.0.2. 
 - I checked on Vagrant's page [how to install it](https://www.vagrantup.com/docs/) and the steps to follow.
 - For VirtualBox, I just installed it directly [from the website](https://www.virtualbox.org/).
+
 I tried to run the VM directly from Windows cmd but it did not work: I realised the terminal on Windows was not able to do that.
 
 <a href="https://i.imgur.com/1ObSIUb.jpg" title="Checking Vagrant installation">
@@ -75,11 +76,13 @@ I restarted VirtualBox, this time with admin rights. I deleted `Barbosa` and sta
 <img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="Terminal is up"></a>
 
 The keyboard was set to qwerty (my own keyboard had no issue with azerty), so I entered `sudo loadkeys fr` to modify it.
+- I also realized at that point that I was not able to copy/paste anything into the terminal. I tried [installing the Guest addition](https://askubuntu.com/questions/22743/how-do-i-install-guest-additions-in-a-virtualbox-vm/22745#22745) but I was unable to do so. After trying a lot of different things without success (or without fully understanding what I was doing), I decided to manually type every command myself: at least, that would allow me to fully understand how spacing/indentation works, even if that would be time-consuming!
 
 <a href="https://i.imgur.com/1Wv51kb.jpg" title="Changing keyboard language">
 <img src="https://i.imgur.com/1Wv51kb.jpg" width="400" height="217" alt="Changing keyboard language"></a>
 
 
+Once connected to the VM - I did not use SSH at that point as I didn't know how to do it, so I admit that I used vagrant/vagrant as username and password every time I connected to my VM. 
 
 <a href="https://i.imgur.com/9LTUJC6.jpg" title="Installing Datadog agent">
 <img src="https://i.imgur.com/9LTUJC6.jpg" width="400" height="217" alt="Installing Datadog agent"></a>
