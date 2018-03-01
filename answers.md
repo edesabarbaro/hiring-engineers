@@ -212,6 +212,7 @@ Then, I proceeded to install git. I ended up after that with an error: `Could no
 <img src="https://i.imgur.com/aKFIJPG.jpg" width="400" height="217" alt="Could not locate gemfile"></a>
 
  So after googling again, I used the `bundle init` command which allowed to create a gemfile, and made the install again successfully.
+ (I apologize, there is no screenshot number 36, I forgot to add this number when creating the files)
 
 <a href="https://i.imgur.com/Iwp2KCj.jpg" title="Bundle init">
 <img src="https://i.imgur.com/Iwp2KCj.jpg" width="400" height="217" alt="Bundle init"></a>
@@ -219,25 +220,28 @@ Then, I proceeded to install git. I ended up after that with an error: `Could no
 <a href="https://i.imgur.com/JOjWBk5.jpg" title="Info are still OK">
 <img src="https://i.imgur.com/JOjWBk5.jpg" width="400" height="217" alt="Info are still OK"></a>
 
+After doing this, I realized I had made a mistake! It seemed very difficult to make the first check, and when scrolling down I saw the "Your first check" menu. I also did a bit of googling and ended up finding this article on [how to monitor MySQL with Datadog](https://www.datadoghq.com/blog/mysql-monitoring-with-datadog/) which made me understand that it was easier than expected.
 
-**00. XXXXX**
-   - XXXXXXX
+I decided to follow [Your first check](https://docs.datadoghq.com/agent/agent_checks/#your-first-check) instructions, and immediately created the needed files: random.py and random.yaml in the correct directories.
+- Here again, I made a mistake: I used a `random.random` function instead of `random.randint` to define the metrics.
+- I corrected that mistake later.
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/pBOLTKa.jpg" title="Creating the random.py file">
+<img src="https://i.imgur.com/pBOLTKa.jpg" width="400" height="217" alt="Creating the random.py file"></a>
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/OYQZwk1.jpg" title="Creating the random.yaml file">
+<img src="https://i.imgur.com/OYQZwk1.jpg" width="400" height="217" alt="Creating the random.yaml file"></a>
+
+> Change your check's collection interval so that it only submits the metric once every 45 seconds.
+> Bonus Question: Can you change the collection interval without modifying the Python check file you created?
+
+If you modify the yaml file instead of the python file, you can add the collection interval directly. This was indicated [on this page](https://docs.datadoghq.com/agent/agent_checks/#configuration): "`min_collection_interval` can be added to the `init_config` section to help define how often the check should be run."
+I also found [this help article](https://help.datadoghq.com/hc/en-us/articles/203557899-How-do-I-change-the-frequency-of-an-agent-check-) confirming that it could be added to the yaml file directly.
+
+<a href="https://i.imgur.com/JrUjVRR.jpg" title="Min collection interval">
+<img src="https://i.imgur.com/JrUjVRR.jpg" width="400" height="217" alt="Min collection interval"></a>
 
 
-**00. XXXXX**
-   - XXXXXXX
-
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
-
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
 
 
 **00. XXXXX**
