@@ -17,6 +17,12 @@ You can find [at this address](https://imgur.com/a/GMviG) the full imgur album w
     - [Adding tags](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#adding-tags)
     - [Adding a database](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#adding-a-database)
     - [Creating a custom metric](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#creating-a-custom-metric)
+
+As I decided to start again from scratch after doing this, you can find the second album [at this address](https://imgur.com/a/UYjEX).
+
+- [Creating a new VM to start again](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#creating-a-new-vm-to-start-again)
+
+- [Visualizing Data](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#visualizing-data)
     
 
 
@@ -295,5 +301,77 @@ I finally managed to obtain a nice metric board!
 
 ## Visualizing Data
 
-<a href="https://i.imgur.com/zYHcsjn.jpg" title="XXXXX">
-<img src="https://i.imgur.com/zYHcsjn.jpg" width="400" height="217" alt="XXXXX"></a>
+> Utilize the Datadog API to create a Timeboard that contains:
+
+> Your custom metric scoped over your host.
+> Any metric from the Integration on your Database with the anomaly function applied.
+> Your custom metric with the rollup function applied to sum up all the points for the past hour into one bucket
+> Please be sure, when submitting your hiring challenge, to include the script that you've used to create this Timemboard.
+
+
+<a href="https://i.imgur.com/VXAFKqU.jpg" title="Creating timeboard">
+<img src="https://i.imgur.com/VXAFKqU.jpg" width="400" height="217" alt="Creating timeboard"></a>
+
+```
+#!/usr/bin/env python
+
+from datadog import initialize, api
+
+import urllib3
+urllib3.disable_warnings()     
+
+options = {
+    'api_key': 'MYAPIKEY',
+    'app_key': 'MYAPPKEY'
+}
+
+initialize(**options)
+
+title = "Visualizing Data for Barbosa"
+description = "Timeboard using Datadog's API"
+graphs = [
+
+{
+    "definition": {
+        "events": [],
+        "requests": [
+            {"q": "my_metric{host:precise64}"}
+        ],
+        "viz": "timeseries"
+    },
+    "title": "My metric scoped over my host"
+},
+
+{
+    "definition": {
+        "events": [],
+        "requests": [
+            {"q": "anomalies(avg:mysql.performance.cpu_time{host:precise64}, 'robust', 2)"}
+        ],
+        "viz": "timeseries"
+    },
+    "title": "Anomalies on MySQL for CPU time"
+
+},
+
+{
+    "definition": {
+        "events": [],
+        "requests": [
+            {"q": "avg:ùy_metric{host:precise64}.rollup(sum, 3600)"}
+    ],
+        "viz": "timeseries"
+    },
+    "title": "Rollup for My metric over the past hour"
+
+}]
+
+read_only = True
+api.Timeboard.create(title=title,
+                     description=description,
+                     graphs=graphs,
+                     read_only=read_only)
+                     
+```
+
+**Unfinished yet**
