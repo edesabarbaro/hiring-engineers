@@ -451,6 +451,12 @@ So, I disabled the warning as recommended [on the troubleshooting page](https://
 - However, *something* is indeed happening since the `hello world` gets printed.
 - I need to find what error I have made that is preventing the timeboard from being created.
 - I tried to [find some help on AskUbuntu](https://askubuntu.com/questions/1010971/nothing-happens-when-executing-python-script-with-datadog-api) but this hasn't been successful yet!
+- I also tried to create a timeboard on Datadog, then to upgrade it directly from the script: if you check [the last script](https://github.com/edesabarbaro/hiring-engineers/blob/master/timeboardedesabarbaro.py) you will see that I tried to update a timeboard at the end. Unfortunately, it didn't work either.
 - I will make more tests to find where the issue is coming from.
 
-**Unfinished yet**
+Ultimately, I took the time to learn [how to clone a github repo](https://help.github.com/articles/cloning-a-repository/#platform-linux) on my VM in order to [add the different files](https://help.github.com/articles/adding-a-file-to-a-repository-using-the-command-line/#platform-linux) : you can find [timeboardedesabarbaro.py](https://github.com/edesabarbaro/hiring-engineers/blob/master/timeboardedesabarbaro.py), [my_metric.yaml](https://github.com/edesabarbaro/hiring-engineers/blob/master/my_metric.yaml) and [my_metric.py](https://github.com/edesabarbaro/hiring-engineers/blob/master/my_metric.py) files.
+
+<a href="https://i.imgur.com/evswfLU.jpg" title="Adding files to github">
+<img src="https://i.imgur.com/evswfLU.jpg" width="400" height="217" alt="Adding files to github"></a>
+
+**I haven't finished the test yet**
