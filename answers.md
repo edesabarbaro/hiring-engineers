@@ -308,17 +308,21 @@ I finally managed to obtain a nice metric board!
 > Your custom metric with the rollup function applied to sum up all the points for the past hour into one bucket
 > Please be sure, when submitting your hiring challenge, to include the script that you've used to create this Timemboard.
 
+Here, I decided to create a timeboard named `timeboardedesabarbaro.py` that I placed in a directory called datadog in /home.
+I admit that I was a bit stuck on this part on which settings to add for the graphs, so I spent some time checking information on the different parts of the documentation. Ultimately, I checked [the forks and what other engineers had done](https://github.com/DataDog/hiring-engineers/network) to understand the code.
 
 <a href="https://i.imgur.com/VXAFKqU.jpg" title="Creating timeboard">
 <img src="https://i.imgur.com/VXAFKqU.jpg" width="400" height="217" alt="Creating timeboard"></a>
 
+
+This allowed me to understand how to create a dashboard and which parameters to add. I encountered several issues in the process however.
+- I began with creating the script file, that I filled with the below code.
+- Then, I made it executable with `chmod 755 timeboardedesabarbaro.py`
+- After that, I tried to execute it by using `sudo ./timeboardedesabarbaro.py`
+However, I encountered an error: "Can't read /var/mail/datadog".
+
 ```
-#!/usr/bin/env python
-
-from datadog import initialize, api
-
-import urllib3
-urllib3.disable_warnings()     
+from datadog import initialize, api  
 
 options = {
     'api_key': 'MYAPIKEY',
@@ -327,7 +331,7 @@ options = {
 
 initialize(**options)
 
-title = "Visualizing Data for Barbosa"
+title = "Visualizing Data for edesabarbaro"
 description = "Timeboard using Datadog's API"
 graphs = [
 
@@ -358,7 +362,7 @@ graphs = [
     "definition": {
         "events": [],
         "requests": [
-            {"q": "avg:ùy_metric{host:precise64}.rollup(sum, 3600)"}
+            {"q": "avg:my_metric{host:precise64}.rollup(sum, 3600)"}
     ],
         "viz": "timeseries"
     },
@@ -373,5 +377,80 @@ api.Timeboard.create(title=title,
                      read_only=read_only)
                      
 ```
+
+<a href="https://i.imgur.com/R7SYKUZ.jpg" title="nano timeboard">
+<img src="https://i.imgur.com/R7SYKUZ.jpg" width="400" height="217" alt="nano timeboard"></a>
+
+<a href="https://i.imgur.com/zh8DLF8.jpg" title="Error with shell">
+<img src="https://i.imgur.com/zh8DLF8.jpg" width="400" height="217" alt="Error with shell"></a>
+
+I read that it was because the execution was being made via shell, and we wanted to use python here. I learnt about shebang commands and added the following one at the beginning of the script: `#!/usr/bin/env python`. This allowed the script to be launched with python indeed.
+
+I executed the script again and had the following error: `ImportError: no module named datadog`.
+
+<a href="https://i.imgur.com/8Csc93d.jpg" title="Adding shebang">
+<img src="https://i.imgur.com/8Csc93d.jpg" width="400" height="217" alt="Adding shebang"></a>
+
+<a href="https://i.imgur.com/w2OBInY.jpg" title="ImportError">
+<img src="https://i.imgur.com/w2OBInY.jpg" width="400" height="217" alt="ImportError"></a>
+
+Here, it became a little bit complicated, because I encountered several errors in a row that took a little time to be fixed since I did not know any of them.
+- I instantly knew I had forgotten to install the library, so I went on [datadogpy](https://github.com/DataDog/datadogpy) Github repository to follow the instructions on how to add the library.
+- When using `pip install datadog` or `sudo pip install datadog`, I had a specific error:
+```
+Cannot fetch index base URL http://pypi.python.org/simple/
+Could not find any downloads that satisfy the requirement datadog
+```
+- I learnt how to read logs using less, which allowed me to discover that this was linked to an SSL error.
+
+<a href="https://i.imgur.com/RjB7Dt6.jpg" title="SSL error">
+<img src="https://i.imgur.com/RjB7Dt6.jpg" width="400" height="217" alt="SSL error"></a>
+
+<a href="https://i.imgur.com/X7BeyCi.jpg" title="Logs">
+<img src="https://i.imgur.com/X7BeyCi.jpg" width="400" height="217" alt="Logs"></a>
+
+So, in order to force the SSL certificate to install the datadog package, I added `-i https://pypi.python/org/simple/` to all the commands. This allowed me to install the package.
+
+After that, the error was gone, but I had one other error remaining:
+```
+/usr/local/lib/python2.7/dist-packages/urllib3/util/ssl_.py:339: 
+SNIMissingWarning: An HTTPS request has been made, but the SNI (Subject Name 
+Indication) extension to TLS is not available on this platform. This may 
+cause the server to present an incorrect TLS certificate, which can cause 
+validation failures. You can upgrade to a newer version of Python to solve 
+this. For more information, see https://urllib3.readthedocs.io/en/latest/advanced-
+usage.html#ssl-warnings.
+SNIMissingWarning
+/usr/local/lib/python2.7/dist-packages/urllib3/util/ssl_.py:137: 
+InsecurePlatformWarning: A true SSLContext object is not available. This 
+prevents urllib3 from configuring SSL appropriately and may cause certain 
+SSL connections to fail. You can upgrade to a newer version of Python to 
+solve this. For more information, see 
+https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings.
+InsecurePlatformWarning
+```
+
+<a href="https://i.imgur.com/RkqCBy3.jpg" title="Forcing SSL">
+<img src="https://i.imgur.com/RkqCBy3.jpg" width="400" height="217" alt="Forcing SSL"></a>
+
+<a href="https://i.imgur.com/KUUk0rv.jpg" title="SNIMissingWarning">
+<img src="https://i.imgur.com/KUUk0rv.jpg" width="400" height="217" alt="SNIMissingWarning"></a>
+
+I tried to solve this error, but was not able to and kept having the same issue. I also tried to upgrade the python version but I will admit that I thought I might break something if deleting the old version of Python.
+
+So, I disabled the warning as recommended [on the troubleshooting page](https://urllib3.readthedocs.io/en/latest/advanced-usage.html#ssl-warnings). This caused the warning to disappear indeed... But when executing my script, nothing happened. I added a `print "hello world"` to be sure the script was indeed executed, and the print works!
+
+<a href="https://i.imgur.com/RiLWaxI.jpg" title="Disabling warning">
+<img src="https://i.imgur.com/RiLWaxI.jpg" width="400" height="217" alt="Disabling warning"></a>
+
+<a href="https://i.imgur.com/Nrv03ID.jpg" title="Script is executed">
+<img src="https://i.imgur.com/Nrv03ID.jpg" width="400" height="217" alt="Script is executed"></a>
+
+- I am now stuck with the script not working.
+- I believe it should automatically create a timeboard in my dashboard, but nothing happens.
+- However, *something* is indeed happening since the `hello world` gets printed.
+- I need to find what error I have made that is preventing the timeboard from being created.
+- I tired to [find some help on AskUbuntu](https://askubuntu.com/questions/1010971/nothing-happens-when-executing-python-script-with-datadog-api) but this hasn't been successful yet!
+- I will make more tests to find where the issue is coming from.
 
 **Unfinished yet**
