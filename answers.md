@@ -17,6 +17,8 @@ You can find [at this address](https://imgur.com/a/GMviG) the full imgur album w
     - [Adding tags](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#adding-tags)
     - [Adding a database](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#adding-a-database)
     - [Creating a custom metric](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#creating-a-custom-metric)
+    
+
 
 ## Prerequisites - Setup the environment
 
@@ -242,23 +244,56 @@ I also found [this help article](https://help.datadoghq.com/hc/en-us/articles/20
 <img src="https://i.imgur.com/JrUjVRR.jpg" width="400" height="217" alt="Min collection interval"></a>
 
 
+## Creating a new VM to start again
+
+> After doing all this and finishing the part "Collecting Metrics", I decided to start over again to make sure I had fully understood how everything worked.
+
+I did not want to keep going without making sure I new how to boot a VM properly and I wanted to be able to do all this correctly, without making mistakes. I also knew I had made two errors because it didn't feel right at the time I made them: first with the tags, and then with the random value on my metric.
+
+- So I deleted my VM and created a whole new one, it took me about an hour to do everything again.
+- I reconfigured the Agent with the correct tags, which appeared automatically in the Host Map this time.
+
+<a href="https://i.imgur.com/vuOhtTK.jpg" title="Tags are correct">
+<img src="https://i.imgur.com/vuOhtTK.jpg" width="400" height="217" alt="Tags are correct"></a>
+
+- Then, I installed and configured MySQL again, and granted the correct permissions.
+
+<a href="https://i.imgur.com/FI3EHCt.jpg" title="MySQL config 1">
+<img src="https://i.imgur.com/FI3EHCt.jpg" width="400" height="217" alt="MySQL config "></a>
+
+<a href="https://i.imgur.com/ytRZnId.jpg" title="MySQL config 2">
+<img src="https://i.imgur.com/ytRZnId.jpg" width="400" height="217" alt="MySQL config 2"></a>
+
+- I was however met by an error I didn't encounter the first time with innodb. I removed it after seeing that it was not compatible with MySQL 5.5, and it worked without problem after that.
+
+<a href="https://i.imgur.com/zYHcsjn.jpg" title="MySQL yaml file">
+<img src="https://i.imgur.com/zYHcsjn.jpg" width="400" height="217" alt="MySQL yaml file"></a>
+
+<a href="https://i.imgur.com/5Q2TDs0.jpg" title="Error with innodb">
+<img src="https://i.imgur.com/5Q2TDs0.jpg" width="400" height="217" alt="Error with innodb"></a>
 
 
-**00. XXXXX**
-   - XXXXXXX
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/5KYF4Ty.jpg" title="Yaml file">
+<img src="https://i.imgur.com/5KYF4Ty.jpg" width="400" height="217" alt="Yaml file"></a>
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/Ay8Ggmt.jpg" title="Info ok">
+<img src="https://i.imgur.com/Ay8Ggmt.jpg" width="400" height="217" alt="Info ok"></a>
 
+Then, I created the my_metric.py file again, this time I corrected the random.randint!
 
-**00. XXXXX**
-   - XXXXXXX
+<a href="https://i.imgur.com/RyjPvBt.jpg" title="My metric py file">
+<img src="https://i.imgur.com/RyjPvBt.jpg" width="400" height="217" alt="My metric py file"></a>
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+<a href="https://i.imgur.com/HFVhydP.jpg" title="My metric yaml file">
+<img src="https://i.imgur.com/HFVhydP.jpg" width="400" height="217" alt="My metric yaml file"></a>
 
-<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
-<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+I finally managed to obtain a nice metric board!
+
+<a href="https://i.imgur.com/8732CuL.jpg" title="My metric">
+<img src="https://i.imgur.com/8732CuL.jpg" width="400" height="217" alt="My metric"></a>
+
+## Visualizing Data
+
+<a href="https://i.imgur.com/zYHcsjn.jpg" title="XXXXX">
+<img src="https://i.imgur.com/zYHcsjn.jpg" width="400" height="217" alt="XXXXX"></a>
