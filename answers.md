@@ -100,6 +100,8 @@ Once connected to the VM - I did not use SSH at that point as I didn't know how 
 
 ## Collecting metrics
 
+> Add tags in the Agent config file and show us a screenshot of your host and its tags on the Host Map page in Datadog.
+
 I added tags to the config file using `sudo nano /etc/dd-agent/datadog.conf`, then saved. At that point, I had never modified a file so I did not know that '#' were made for comments lines only. I added the tags on the wrong line and then added them manually on the Host Map. Though I felt something was wrong, I wasn't sure how to correct it and left it as such.
 
 <a href="https://i.imgur.com/aCvy6Ta.jpg" title="Adding tags">
@@ -108,6 +110,7 @@ I added tags to the config file using `sudo nano /etc/dd-agent/datadog.conf`, th
 <a href="https://i.imgur.com/sfYy0EH.jpg" title="Host Map tags">
 <img src="https://i.imgur.com/sfYy0EH.jpg" width="400" height="217" alt="Host Map tags"></a>
 
+> Install a database on your machine (MongoDB, MySQL, or PostgreSQL) and then install the respective Datadog integration for that database.
 
 I proceeded to install MySQL after that.
 - To install it, I followed the process [from the documentation](https://docs.datadoghq.com/integrations/mysql/).
@@ -168,26 +171,79 @@ The left screenshot (28) shows the corrected yaml file after changing the indent
 <a href="https://i.imgur.com/SB6rDWc.jpg" title="Info on agent is ok">
 <img src="https://i.imgur.com/SB6rDWc.jpg" width="400" height="217" alt="Info on agent is good"></a>
 
+MySQL was correctly installed!
+
+<a href="https://i.imgur.com/YiyuXuh.jpg" title="MySQL reporting">
+<img src="https://i.imgur.com/YiyuXuh.jpg" width="400" height="217" alt="MySQL reporting"></a>
+
+> Create a custom Agent check that submits a metric named my_metric with a random value between 0 and 1000.
+
+Here, I made a mistake that made me lose a lot of time.
+- I used [the documentation](https://docs.datadoghq.com/agent/agent_checks/) to try to create the Agent check.
+- After reading it, I decided to make an integration and started following the indications.
+- So I installed ruby and wget
+
+<a href="https://i.imgur.com/zq1paOE.jpg" title="Installing ruby">
+<img src="https://i.imgur.com/zq1paOE.jpg" width="400" height="217" alt="Installing ruby"></a>
+
+<a href="https://i.imgur.com/Je3VXdi.jpg" title="Ruby installed">
+<img src="https://i.imgur.com/Je3VXdi.jpg" width="400" height="217" alt="Ruby installed"></a>
+
+**00. XXXXX**
+   - XXXXXXX
+
+<a href="https://i.imgur.com/lPY17Zc.jpg" title="Installing git">
+<img src="https://i.imgur.com/lPY17Zc.jpg" width="400" height="217" alt="Installing git"></a>
+
+<a href="https://i.imgur.com/aKFIJPG.jpg" title="Could not locate gemfile">
+<img src="https://i.imgur.com/aKFIJPG.jpg" width="400" height="217" alt="Could not locate gemfile"></a>
+
+
 **00. XXXXX**
    - XXXXXXX
 
 <a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
 <img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
 
+<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
+<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+
+
 **00. XXXXX**
    - XXXXXXX
 
 <a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
 <img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
 
+<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
+<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+
+
 **00. XXXXX**
    - XXXXXXX
 
 <a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
 <img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
 
+<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
+<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+
+
 **00. XXXXX**
    - XXXXXXX
+
+<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
+<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+
+<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
+<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
+
+
+**00. XXXXX**
+   - XXXXXXX
+
+<a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
+<img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
 
 <a href="https://i.imgur.com/6F1Eqag.jpg" title="XXXXX">
 <img src="https://i.imgur.com/6F1Eqag.jpg" width="400" height="217" alt="XXXXX"></a>
