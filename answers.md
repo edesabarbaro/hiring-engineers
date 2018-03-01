@@ -14,6 +14,9 @@ You can find [at this address](https://imgur.com/a/GMviG) the full imgur album w
     - [Installing a VM](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#installing-a-vm)
     - [Installing Datadog Agent](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#installing-datadog-agent)
 - [Collecting metrics](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#collecting-metrics)
+    - [Adding tags](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#adding-tags)
+    - [Adding a database](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#adding-a-database)
+    - [Creating a custom metric](https://github.com/edesabarbaro/hiring-engineers/blob/master/answers.md#creating-a-custom-metric)
 
 ## Prerequisites - Setup the environment
 
